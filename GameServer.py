@@ -216,9 +216,14 @@ def HandleUser(cnn:socket.socket):
 
 
 if __name__ == "__main__":
-    port = sys.argv[1]
-    UserFilePath = sys.argv[2]
-
+    try:
+        port = sys.argv[1]
+        UserFilePath = sys.argv[2]
+        with open(UserFilePath, 'r') as f:
+            pass
+    except:
+        print("cannot start the server")
+        exit(0)
     while True:
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
